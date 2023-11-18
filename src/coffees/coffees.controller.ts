@@ -1,8 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
-
 
     @Get('hello/hi')
     testing(){
@@ -17,5 +16,10 @@ export class CoffeesController {
     @Get('/h')
     getAllResults(){
         return 'Testing basic get request 2';
+    }
+
+    @Get(':id')
+    dynamicRouteTesting(@Param('id') id : string){
+        return `Dynamic id = ${id}`
     }
 }
