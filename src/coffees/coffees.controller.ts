@@ -4,6 +4,11 @@ import { Controller, Get } from '@nestjs/common';
 export class CoffeesController {
 
 
+    @Get('hello/hi')
+    testing(){
+        return 'nested'
+    }
+
     @Get()
     getResults(){
         return 'Testing basic get request';
