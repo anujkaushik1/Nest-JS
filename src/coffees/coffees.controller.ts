@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -18,10 +18,10 @@ export class CoffeesController {
         return 'Testing basic get request 2';
     }
 
-    @Get(':id')
-    dynamicRouteTesting(@Param('id') id : string){
-        return `Dynamic id = ${id}`
-    }
+    // @Get(':id')
+    // dynamicRouteTesting(@Param('id') id : string){
+    //     return `Dynamic id = ${id}`
+    // }
 
     @Post()
     postData(@Body() body){
@@ -31,5 +31,13 @@ export class CoffeesController {
     @Post('/test')
     specificPostData(@Body('anuj') anujKey : string){
         return `the body key is = ${anujKey}`; 
+    }
+
+    @Get('status')
+    explicitStatusCode(@Res() response){
+        return response.status(400).json({
+            success : true,
+            msg : 'Hello World !'
+        })
     }
 }
