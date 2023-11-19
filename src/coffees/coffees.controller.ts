@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Res } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -39,5 +39,14 @@ export class CoffeesController {
             success : true,
             msg : 'Hello World !'
         })
+    }
+
+    @Get('query')
+    testQueryParameter(@Query() queryParameter){
+
+        const {limit, offSet} = queryParameter;
+
+        return `Limit = ${limit}, offSet = ${offSet}`
+
     }
 }
